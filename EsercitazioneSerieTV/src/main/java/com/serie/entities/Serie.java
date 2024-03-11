@@ -11,14 +11,12 @@ import jakarta.persistence.Table;
 public class Serie {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // della chiave primaria se ne occupa il DB della chiave
-														// primaria
-//	@Column(name ="title") //annotazione non necessaria
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int id;
 	private String titolo;
 	private String trama;
 	private enum genere{}; //TODO
-	private int valutazione;
+	private double valutazione;
 	
 	public int getId() {
 		return id;
@@ -38,10 +36,10 @@ public class Serie {
 	public void setTrama(String trama) {
 		this.trama = trama;
 	}
-	public int getValutazione() {
+	public double getValutazione() {
 		return valutazione;
 	}
-	public void setValutazione(int valutazione) {
+	public void setValutazione(double valutazione) {
 		this.valutazione = valutazione;
 	}
 

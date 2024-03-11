@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.serie.entities.Serie;
@@ -22,17 +23,15 @@ public class ControllerRest {
 	private SerieService service;
 
 	@CrossOrigin()
-	@GetMapping("api/serie")
-	
+	@GetMapping("/serie")
 	public List<Serie> getSerie(){
 		return service.getSerie();		
 	}
 	
-	@PostMapping("api/serie")
-	public Serie addSerie(@RequestBody Serie s) {
+	@PostMapping("/serie")
+	public Serie addSerie(Serie s) {
 		service.addSerie(s);
 		return s;
 	}
-	
 	
 }

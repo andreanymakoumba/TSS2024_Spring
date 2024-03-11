@@ -11,7 +11,7 @@
 	<groupId>com.savarino</groupId>
 	<artifactId>serietv</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>EsercitazioneSerieTV</name>
+	<name>Prj04_EsercitazioneSerieTV</name>
 	<description>Esercitazione SerieTV 06 Marzo</description>
 	<properties>
 		<java.version>17</java.version>
