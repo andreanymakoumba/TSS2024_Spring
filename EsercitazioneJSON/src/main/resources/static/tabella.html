@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Titolo</th>
+                    <th>Anno</th>
+                    <th>Rating</th>
+                  </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    </div>
+    <script>
+        const URL = "https://raw.githubusercontent.com/maboglia/ProgrammingResources/master/tabelle/film/top-100-saddest-films-rt.json"
+
+        fetch(URL)
+            .then(res => res.json())
+            .then(res => {
+
+                for(const film of res){
+
+                    film.anno = film.anno.replace("(", "")
+                    film.anno = film.anno.replace(")", "")
+                    film.anno = parseInt(film.anno)
+                    film.rating = parseFloat(film.rating.replace("%", "") /10)
+                    
+                    
+                    fetch("http://localhost:9005/api/film", {
+                    method: "POST",
+                    body: JSON.stringify(film),
+                    headers: {"Content-type": "application/json; charset=UTF-8"}
+                    })
+                    .then(response => response.json()) 
+                    .then(json => console.log(json))
+                    .catch(err => console.log(err));
+                }
+            })
+            
+        
+    </script>
+</body>
+</html>
