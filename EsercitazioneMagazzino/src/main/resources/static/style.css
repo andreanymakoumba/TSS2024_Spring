@@ -1,0 +1,11 @@
+.btn-round{
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    font-size: 60px;
+    width: 1em;
+    height: 1em;
+    align-items: center;
+    justify-content: center;
+    font-family: serif;
+}
