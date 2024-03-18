@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>Seleziona regione</h1>
+	
+		<select id="selettoreRegioni" name = "regione">
+			<option>Scegli una regione</option>
+			<option th:each="regione : ${regioni}" th:text="${regione}"></option>
+		</select>
+		
+		<select id="selettoreProvince" name = "provincia">
+			<option>Scegli una provincia</option>
+		</select>
+		
+		<button id="btnCerca" disabled>Cerca</button>
+		
+		<div id="output"></div>
+		
+		<script type="text/javascript">
+			const URL = 'api/province/';
+			const TENDINA_REGIONE= document.querySelector('#selettoreRegioni')
+			const TENDINA_PROVINCIA= document.querySelector('#selettoreProvince')
+			const BTN_CERCA= document.querySelector('#btnCerca')
+			const OUTPUT= document.querySelector('#output')
+			
+			//-------TENDINA PROVINCIA-----------//
+			
+			TENDINA_REGIONE.addEventListener('change', function(){
+				const REGIONE = TENDINA_REGIONE.value;
+				console.log(REGIONE);
+				
+				fetch(URL+REGIONE)
+					.then(res => res.json())
+					.then(province => {
+						TENDINA_PROVINCIA.innerHTML = '<option>Scegli una provincia</option>';
+						for(const p of province){
+							const OPTION = document.createElement('option')
+							OPTION.textContent = p.comune
+							OPTION.value = p.id
+							TENDINA_PROVINCIA.append(OPTION)
+						}
+						
+					})
+			})
+			
+			//-------------------------------
+			
+			TENDINA_PROVINCIA.addEventListener('change', function(){
+				BTN_CERCA.removeAttribute("disabled", "")
+			})
+			
+			//-------------------------------
+			
+			BTN_CERCA.addEventListener("click", function(){
+				fetch(URL + 'id/'+TENDINA_PROVINCIA.value)
+					.then(res => res.json())
+					.then(provincia => {
+						OUTPUT.innerHTML = "";
+						const H2 = document.createElement("h2")
+						H2.textContetn = provincia.comune
+						OUTPUT.append(H2)
+						const p = document.createElement("p")
+						p.textContent = "Maschi: " + provincia.maschi
+						OUTPUT.append(p)
+						const pf = document.createElement("p")
+						pf.textContent = "Femmine: " + provincia.femmine
+						OUTPUT.append(pf)
+						const pt = document.createElement("p")
+						pt.textContent = "Totali: " + provincia.totale
+						OUTPUT.append(pt)
+						
+					})
+			})
+			
+			
+		
+		
+		</script>
+		
+	
+
+</body>
+</html>
