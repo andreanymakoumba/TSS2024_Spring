@@ -20,41 +20,41 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("api")
-public class MagazzinoREST {
+public class MagazzinoREST2 {
 	
 	@Autowired
 	private MagazzinoService service;
 
 	
-	@CrossOrigin()
-	@GetMapping("prodotti")
-	public List<Prodotto> getProdotti() {
-		return service.getProdotti();
-	}
-	
-	@PostMapping("prodotti")
-	public Prodotto add(@RequestBody Prodotto p) {
-		return service.addProdotto(p);
-	}
-	
 //	@CrossOrigin()
-//	@GetMapping("movimenti")
-//	public List<Movimento> getMovimenti() {
-//		return service.getMovimenti();
+//	@GetMapping("prodotti")
+//	public List<Prodotto> getProdotti() {
+//		return service.getProdotti();
 //	}
 //	
-//	@PostMapping("movimenti")
-//	public Movimento addMovimento(@RequestBody Movimento m) {
-//		return service.addMovimento(m);
+//	@PostMapping("prodotti")
+//	public Prodotto add(@RequestBody Prodotto p) {
+//		return service.addProdotto(p);
 //	}
+	
+	@CrossOrigin()
+	@GetMapping("movimenti")
+	public List<Movimento> getMovimenti() {
+		return service.getMovimenti();
+	}
+	
+	@PostMapping("movimenti")
+	public Movimento addMovimento(@RequestBody Movimento m) {
+		return service.addMovimento(m);
+	}
 
-	@GetMapping("prodotti/{id}")
-    public Prodotto getProdottoById(@PathVariable int id) {
-        return service.getProdotti()
-                .stream()
-                .filter(g->g.getId() == id)
-                .findFirst()
-                .get();
-    }
+//	@GetMapping("prodotti/{id}")
+//    public Prodotto getProdottoById(@PathVariable int id) {
+//        return service.getProdotti()
+//                .stream()
+//                .filter(g->g.getId() == id)
+//                .findFirst()
+//                .get();
+//    }
 	
 }
