@@ -17,16 +17,22 @@ public class Prenotazione {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_prenotazione;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_utente")
 	private Utente utente;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_viaggio")
 	private Viaggio viaggio;
 	
-	private StatoViaggio stato;
+	private String stato;
 	
+	public Prenotazione(Utente utente, Viaggio viaggio, String stato) {
+		this.utente = utente;
+		this.viaggio = viaggio;
+		this.stato = stato;
+	}
+
 	public Prenotazione() {
 		// TODO Auto-generated constructor stub
 	}
@@ -59,13 +65,20 @@ public class Prenotazione {
 		this.viaggio = viaggio;
 	}
 
-	public StatoViaggio getStato() {
+	public String getStato() {
 		return stato;
 	}
 
-	public void setStato(StatoViaggio stato) {
+	public void setStato(String stato) {
 		this.stato = stato;
 	}
+
+	@Override
+	public String toString() {
+		return "Prenotazione [id_prenotazione=" + id_prenotazione + ", utente=" + utente + ", viaggio=" + viaggio
+				+ ", stato=" + stato + "]";
+	}
+	
 	
 	
 }

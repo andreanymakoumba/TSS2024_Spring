@@ -68,6 +68,12 @@ public class Utente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	@Override
+	public String toString() {
+		return "Utente [id_utente=" + id_utente + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email
+				+ ", prenotazioni=" + prenotazioni + "]";
+	}
 	
 	
 }

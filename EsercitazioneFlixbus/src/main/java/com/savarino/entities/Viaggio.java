@@ -38,8 +38,7 @@ public class Viaggio {
 	public Viaggio() {
 	}
 
-	
-	
+		
 	public int getId_viaggio() {
 		return id_viaggio;
 	}
@@ -78,6 +77,12 @@ public class Viaggio {
 
 	public void setPostiDisponibili(int postiDisponibili) {
 		this.postiDisponibili = postiDisponibili;
+	}
+
+	@Override
+	public String toString() {
+		return "Viaggio [id_viaggio=" + id_viaggio + ", origine=" + origine + ", destinazione=" + destinazione
+				+ ", data=" + data + ", postiDisponibili=" + postiDisponibili + ", prenotazione=" + prenotazione + "]";
 	}
 
 	
