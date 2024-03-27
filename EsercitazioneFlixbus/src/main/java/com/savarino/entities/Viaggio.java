@@ -24,6 +24,7 @@ public class Viaggio {
 	private String destinazione;
 	private LocalDate data;
 	private int postiDisponibili;
+	private String percorsoFile;
 	
 	@OneToMany(mappedBy = "viaggio", cascade = CascadeType.ALL)
 	private Set<Prenotazione> prenotazione= new HashSet<Prenotazione>();
