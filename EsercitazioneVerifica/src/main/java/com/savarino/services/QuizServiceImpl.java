@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.savarino.entities.Domanda;
+import com.savarino.entities.DomandaTest;
 import com.savarino.entities.Persona;
 import com.savarino.entities.Test;
 import com.savarino.repos.DomandaDAO;
+import com.savarino.repos.DomandaTestDAO;
 import com.savarino.repos.PersonaDAO;
 import com.savarino.repos.TestDAO;
 
@@ -23,6 +25,9 @@ public class QuizServiceImpl implements QuizService{
 	
 	@Autowired
 	PersonaDAO daoP;
+	
+	@Autowired
+	DomandaTestDAO daoDT;
 	
 	@Override
 	public Test addTest(Test t) {
@@ -97,6 +102,31 @@ public class QuizServiceImpl implements QuizService{
 	@Override
 	public Persona getPersonaById(int id) {
 		return daoP.findById(id).get();
+	}
+
+	@Override
+	public List<DomandaTest> getAllDomandeTest() {
+		return daoDT.findAll();
+	}
+
+	@Override
+	public DomandaTest getDomandaTestById(int id) {
+		return daoDT.findById(id).get();
+	}
+
+	@Override
+	public void deleteDomandaTest(DomandaTest dt) {
+		daoDT.delete(dt);
+	}
+
+	@Override
+	public DomandaTest updateDomandaTest(DomandaTest dt) {
+		return daoDT.save(dt);
+	}
+
+	@Override
+	public DomandaTest addDomandaTest(DomandaTest dt) {
+		return daoDT.save(dt);
 	}
 
 }

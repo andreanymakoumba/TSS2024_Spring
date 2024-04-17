@@ -1,5 +1,6 @@
 package com.savarino.entities;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,7 +22,7 @@ public class Test {
 	private int idTest;
 	
 	private String titoloTest;
-	private String dataTest;
+	private LocalDate dataTest;
 	
 	@ManyToMany
     @JoinTable(
@@ -43,10 +44,10 @@ public class Test {
 	public void setTitoloTest(String titoloTest) {
 		this.titoloTest = titoloTest;
 	}
-	public String getDataTest() {
+	public LocalDate getDataTest() {
 		return dataTest;
 	}
-	public void setDataTest(String dataTest) {
+	public void setDataTest(LocalDate dataTest) {
 		this.dataTest = dataTest;
 	}
 	

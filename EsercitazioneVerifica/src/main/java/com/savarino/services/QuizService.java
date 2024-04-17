@@ -3,6 +3,7 @@ package com.savarino.services;
 import java.util.List;
 
 import com.savarino.entities.Domanda;
+import com.savarino.entities.DomandaTest;
 import com.savarino.entities.Persona;
 import com.savarino.entities.Test;
 
@@ -28,4 +29,11 @@ public interface QuizService {
 	void deletePersona(Persona p);
 	Persona updatePersona(Persona p);
 	Persona getPersonaById(int id);
+	
+	//DomandaTest
+	List<DomandaTest> getAllDomandeTest();
+	DomandaTest getDomandaTestById(int id);
+	void deleteDomandaTest(DomandaTest dt);
+	DomandaTest updateDomandaTest(DomandaTest dt);
+	DomandaTest addDomandaTest(DomandaTest dt);
 }

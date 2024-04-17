@@ -4,10 +4,11 @@ let password = document.querySelector("#elPassword");
 let btnLogin = document.querySelector("#btnLogin");
 
 class Utente {
-    constructor(user, password, testCompl) {
+    constructor(user, password, testCompl, punteggio) {
         this.user = user;
         this.password = password;
         this.testCompl= testCompl;
+        this.punteggio = punteggio;
     }
 }
 let arrayUtenti = JSON.parse(sessionStorage.getItem("utenti") || "[]");
@@ -19,7 +20,7 @@ function registraUtente() {
 
     let esiste = arrayUtenti.find(utente => utente.user === username.value);
     
-    let u = new Utente(username.value, password.value, false);
+    let u = new Utente(username.value, password.value, false, 0);
     console.log(u.user);
     if (!esiste) {
         arrayUtenti.push(u);   

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.savarino.entities.Domanda;
+import com.savarino.entities.DomandaTest;
 import com.savarino.entities.Persona;
 import com.savarino.entities.Test;
 import com.savarino.services.QuizService;
@@ -49,5 +50,15 @@ public class QuizCTRLRest {
 	@PostMapping("persona")
 	public Persona addPersona(@RequestBody Persona p) {
 		return service.addPersona(p);
+	}
+	
+	@GetMapping("domandatest")
+	public List<DomandaTest> getDomandeTest(){
+		return service.getAllDomandeTest();
+	}
+	
+	@PostMapping("domandatest")
+	public DomandaTest addDomandaTest(@RequestBody DomandaTest dt) {
+		return service.addDomandaTest(dt);
 	}
 }
